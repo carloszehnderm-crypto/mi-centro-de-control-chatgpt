@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mi Centro de Control ChatGPT · Edición 3.9 (web)</title><meta name="centro-version" content="3.9.0">
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mi Centro de Control ChatGPT · Edición 4.0 (web)</title><meta name="centro-version" content="4.0.0">
 <style>
 :root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#10233a;background:#eff5f2}*{box-sizing:border-box}body{margin:0}header{background:#078657;color:#fff;padding:22px 26px}header h1{margin:0;font-size:28px}header p{margin:7px 0 0;color:#e4fff4}main{max-width:1580px;margin:auto;padding:22px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 18px}.btn,button{background:#087e56;color:#fff;border:0;border-radius:10px;padding:10px 14px;font-size:14px;cursor:pointer}button.secondary{background:#e2f0eb;color:#08613d}button.outline{background:white;color:#087e56;border:1px solid #8bc6ab}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #faba47}input,select{border:1px solid #c4d9ce;border-radius:9px;padding:10px;min-width:0;background:white;color:#17314b}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);gap:20px}.panel{background:white;border:1px solid #d6e7de;border-radius:16px;padding:18px;min-width:0;box-shadow:0 5px 22px #13402a0c}.paneltop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.panel h2{font-size:21px;margin:0 0 4px}.note{color:#60766b;font-size:13px}.stack{display:grid;gap:12px;margin-top:15px}.item{border:1px solid #dfebe4;border-radius:13px;padding:16px;background:#fbfdfc}.item h3{margin:0 0 6px;font-size:17px;overflow-wrap:anywhere}.meta{font-size:12.5px;color:#54685e;line-height:1.75}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.actions button{padding:8px 10px;font-size:12px}.status{font-size:12px;padding:4px 8px;border-radius:40px;background:#dff5e9;color:#075f3c;display:inline-block}.tag{font-size:11px;padding:4px 8px;border-radius:40px;background:#eef2fa;color:#233f6b;display:inline-block}.itemhead{display:flex;justify-content:space-between;gap:10px;align-items:start}.empty{padding:30px;text-align:center;color:#62766b;border:1px dashed #bfd7cb;border-radius:12px}.alertline{font-size:13px;margin-top:8px}.alerts-panel{padding:13px}.alerts-panel .paneltop{gap:6px}.alerts-panel h2{font-size:18px}.alerts-panel .stack{gap:7px;margin-top:10px}.alerts-panel .item{padding:9px 10px;border-radius:9px}.alerts-panel .item h3{font-size:13px;margin:0}.alerts-panel .itemhead{align-items:center;gap:5px}.alerts-panel .status{font-size:10px;padding:2px 6px;white-space:nowrap}.alerts-panel .meta{font-size:11px;line-height:1.55;margin-top:4px}.alerts-panel .utility{font-size:10px;line-height:1.4;margin-top:10px}.alerts-panel .paneltop button{padding:6px 8px;font-size:11px}.banner{background:#fff6e3;border:1px solid #f4d89a;padding:12px;border-radius:12px;color:#785518;font-size:13px;line-height:1.5;margin:14px 0}.stats{font-size:13px;opacity:.94}dialog{border:0;border-radius:15px;box-shadow:0 25px 100px #0005;width:min(540px,96vw);padding:0}dialog::backdrop{background:#081e17a6}.dialog-inner{padding:22px}.fields{display:grid;gap:12px}.fields label{display:grid;gap:5px;font-size:13px;font-weight:650}.fields input,.fields select{width:100%}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.utility{margin-top:20px;color:#567368;font-size:12px;line-height:1.6}.topright{display:flex;gap:10px;align-items:center;flex-wrap:wrap}#toast{position:fixed;bottom:20px;right:20px;background:#163d2b;color:#fff;padding:12px 16px;border-radius:9px;max-width:360px;display:none;z-index:9}@media(max-width:850px){.layout{grid-template-columns:1fr}header{padding:20px}main{padding:12px}.panel{padding:15px}}@media print{header,.toolbar,.actions,.utility,.banner,.paneltop button,dialog{display:none!important}main{padding:0}.layout{display:block}.panel{box-shadow:none;border:0}.item{break-inside:avoid}body{background:white}}
 .cat{font-size:11px;font-weight:650;display:inline-block;padding:4px 7px;background:#e3f4ef;color:#0b6245;border-radius:6px;margin:7px 0 2px}.filemeta{font-size:12px;color:#395e52;margin-top:4px;overflow-wrap:anywhere}.filemeta small{color:#687971}.actions button.filebtn{background:#176f91}.actions button:disabled{opacity:.55;cursor:not-allowed}#category{min-width:170px}@media(max-width:850px){#category{width:100%}}.filehelp{font-size:11px;color:#667e73;margin-top:5px}
@@ -16,23 +16,23 @@ textarea{resize:vertical;border:1px solid #c4d9ce;border-radius:9px;padding:10px
 .app-access{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 20px;background:#e5f5ec;border:2px solid #74bd96;border-radius:14px;margin-bottom:16px}.app-access[hidden]{display:none}.app-access h2{font-size:20px;margin:0 0 5px}.app-access p{font-size:13px;margin:5px 0;line-height:1.5}.app-version{display:inline-block;background:#e5eefb;color:#254b75;padding:5px 8px;border-radius:6px;font-size:12px;font-weight:650;margin-top:8px}.app-access .actions{margin-top:0}.app-access .app-open{font-size:16px;padding:13px 18px}.app-access [role=status]{font-weight:650;color:#1e6643}#patenteSetup{max-height:85vh;overflow:auto}.setup-steps{padding-left:22px;font-size:14px;line-height:1.6}.setup-steps li{margin-bottom:8px}.app-link{width:100%;font-size:12px}.setup-result{margin-top:12px;line-height:1.5;font-size:13px}.app-help-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}@media print{.app-access{display:none!important}}
 .update-info{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#eaf5ff;border:1px solid #a6c9e9;border-radius:12px;padding:13px 15px;margin-bottom:14px;color:#1b567c}.update-info b{font-size:14px}.update-info .hint{margin-top:3px}.update-info button{background:#176e9e}@media print{.update-info{display:none!important}}
 </style></head><body>
-<header><div style="display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap"><div><h1>📌 Mi Centro de Control ChatGPT</h1><p>Mis trabajos y alertas en una sola pantalla · edición 3.9 · versión web · 09/10/2026</p></div><div class="header-meta"><div id="summary"></div><div id="lastSaved">Sin modificaciones registradas</div></div></div></header>
+<header><div style="display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap"><div><h1>📌 Mi Centro de Control ChatGPT</h1><p>Mis trabajos y alertas en una sola pantalla · edición 4.0 · versión web · 09/10/2026</p></div><div class="header-meta"><div id="summary"></div><div id="lastSaved">Sin modificaciones registradas</div></div></div></header>
 <main>
 <section class="app-access" id="patenteAccess" hidden aria-label="Acceso a Patente CL">
 <div><h2>🚗 Patente CL</h2><p>Tres botones: PatenteChile · AutoRiesgo · AACH / Remates</p><p id="patenteVersion">Acceso preparado para v0.3.4 · 08/10/2026</p><p role="status" id="patenteStatus">Primera vez: actualiza el complemento y comprueba el acceso.</p></div>
 <div class="actions"><button class="app-open" id="openPatente">↗ Abrir Patente CL</button><button class="secondary" id="helpPatente">Configurar / comprobar</button></div>
 </section>
-<div class="update-info" aria-label="Estado de publicación"><div><b>Versión 3.9 · Centro de Control</b><div class="hint" id="updateState" role="status">Las nuevas versiones se publican en esta misma dirección.</div></div><button type="button" id="checkUpdates">↻ Comprobar actualización</button></div>
-<div class="toolbar"><input id="search" placeholder="🔎 Buscar trabajos y archivos..." aria-label="Buscar trabajos" style="flex:1;min-width:190px"><select id="filter" aria-label="Filtrar trabajos"><option value="all">Todos los trabajos</option><option value="linked">Con conversación</option><option value="file">Con archivo o aplicación</option><option value="pending">Sin enlace de conversación</option></select><select id="category" aria-label="Filtrar por categoría"><option value="all">Todas las categorías</option></select><button id="new">+ Agregar trabajo</button><button class="secondary" id="export">⬇ Exportar respaldo</button><button class="secondary" id="historyBtn">↶ Historial</button><button class="secondary" id="runDiag">✓ Verificar todo</button><button class="secondary" id="linkKnown" title="Asociar archivos de la carpeta OneDrive a sus fichas, guardando las rutas solo en tus datos privados">📁 Vincular archivos conocidos</button><button id="linksave" title="Elegir una carpeta sincronizada por OneDrive para copias automáticas">☁ Vincular carpeta OneDrive</button><button class="secondary" id="syncNow" title="Revisar cambios de la carpeta y resolver diferencias">↕ Revisar OneDrive</button><button class="secondary" id="backupNow" title="Crear una copia de seguridad fechada en la carpeta vinculada">⬇ Crear respaldo ahora</button><span id="manualBackupState" class="hint" role="status"></span><button class="outline" id="import">Importar copia</button><input type="file" id="importfile" accept="application/json,.json" hidden></div>
+<div class="update-info" aria-label="Estado de publicación"><div><b>Versión 4.0 · Centro de Control</b><div class="hint" id="updateState" role="status">Las nuevas versiones se publican en esta misma dirección.</div></div><button type="button" id="checkUpdates">↻ Comprobar actualización</button></div>
+<div class="toolbar"><input id="search" placeholder="🔎 Buscar trabajos y archivos..." aria-label="Buscar trabajos" style="flex:1;min-width:190px"><select id="filter" aria-label="Filtrar trabajos"><option value="all">Todos los trabajos</option><option value="linked">Con conversación</option><option value="file">Con archivo o aplicación</option><option value="pending">Sin enlace de conversación</option></select><select id="category" aria-label="Filtrar por categoría"><option value="all">Todas las categorías</option></select><button id="new">+ Agregar trabajo</button><button class="secondary" id="export">⬇ Exportar respaldo</button><button class="secondary" id="historyBtn">↶ Historial</button><button class="secondary" id="runDiag">✓ Verificar todo</button><button class="secondary" id="linkKnown" title="Detectar archivos dentro de la carpeta OneDrive autorizada sin introducir rutas de Windows">↻ Detectar archivos OneDrive</button><button id="linksave" title="Elegir una carpeta sincronizada por OneDrive para copias automáticas">☁ Vincular carpeta OneDrive</button><button class="secondary" id="syncNow" title="Revisar cambios de la carpeta y resolver diferencias">↕ Revisar OneDrive</button><button class="secondary" id="backupNow" title="Crear una copia de seguridad fechada en la carpeta vinculada">⬇ Crear respaldo ahora</button><span id="manualBackupState" class="hint" role="status"></span><button class="outline" id="import">Importar copia</button><input type="file" id="importfile" accept="application/json,.json" hidden></div>
 <div class="savebar" id="savebar" aria-live="polite"><div class="savestatus"><span class="dot"></span><span id="saveStatus">Preparando guardado automático...</span></div><span class="mini" id="syncStatus">OneDrive: pulsa «Vincular carpeta OneDrive» para empezar</span></div><div class="layout"><section class="panel"><div class="paneltop"><div><h2>Mis trabajos</h2><div class="note" id="workcount"></div></div><button class="secondary" id="printall">Imprimir lista</button></div><div class="banner"><b>Protección de datos:</b> las fichas se guardan al editarlas en Chrome. Puedes hacer una copia con <b>Exportar respaldo</b> o vincular una <b>carpeta dentro de OneDrive</b> para guardar el archivo de datos y copias por día. El botón <b>Crear respaldo ahora</b> genera una copia fechada sin modificar tus fichas. La carpeta debe sincronizarse mediante la aplicación OneDrive de Windows. Para traer cambios desde otro computador, pulsa <b>Revisar OneDrive</b>; nunca se reemplazan datos diferentes sin tu confirmación. Esta página no actualiza tus planillas Excel ni abre extensiones o archivos locales desde internet.</div><div class="stack" id="works"></div></section>
 <section class="panel alerts-panel"><div class="paneltop"><div><h2>🔔 Mis alertas</h2><div class="note">5 configuraciones de referencia · verificar en ChatGPT</div></div><button class="secondary" id="printalerts">Imprimir alertas</button></div><div class="stack" id="alerts"></div><p class="utility">Los estados se muestran según la configuración revisada el 8 de octubre de 2026; <b>no se sincronizan automáticamente</b> con ChatGPT. La ejecución y la entrega real del PDF se deben comprobar en ChatGPT y Gmail.</p></section></div>
-<div class="utility">Versión 3.9 · Tus modificaciones quedan guardadas automáticamente en este navegador, incluso al cerrar y volver a abrir el archivo desde la misma ubicación. También se conserva un historial de cambios. Para guardar además los datos en OneDrive, pulsa «Vincular respaldo OneDrive» y elige una ubicación una sola vez cuando Chrome lo permita. Sin ese vínculo, <b>el HTML no se modifica y OneDrive no recibe los cambios internos de las fichas</b>. Puedes usar «Exportar respaldo» para conservar una copia JSON. La versión publicada no abre extensiones Chrome ni archivos de Windows directamente. La fecha y número de modificación son de la ficha en el panel, no del chat; la fecha de archivo es la observada en OneDrive. Los enlaces a conversaciones no se obtienen automáticamente.</div>
+<div class="utility">Versión 4.0 · Tus modificaciones quedan guardadas automáticamente en este navegador, incluso al cerrar y volver a abrir el archivo desde la misma ubicación. También se conserva un historial de cambios. Para guardar además los datos en OneDrive, pulsa «Vincular respaldo OneDrive» y elige una ubicación una sola vez cuando Chrome lo permita. Sin ese vínculo, <b>el HTML no se modifica y OneDrive no recibe los cambios internos de las fichas</b>. Puedes usar «Exportar respaldo» para conservar una copia JSON. La versión publicada no abre extensiones Chrome ni archivos de Windows directamente. La fecha y número de modificación son de la ficha en el panel, no del chat; la fecha de archivo es la observada en OneDrive. Los enlaces a conversaciones no se obtienen automáticamente.</div>
 </main>
 <dialog id="diagnostics"><div class="dialog-inner"><h2>Comprobación del Centro de Control</h2><p class="hint">Solo lectura. No cambia tus trabajos, respaldos ni permisos.</p><pre id="diagOutput" role="status" aria-live="polite" style="max-height:58vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f7f6;border:1px solid #d3e2db;border-radius:10px;padding:14px;font-size:13px;line-height:1.6">Preparando diagnóstico…</pre><div class="actions"><button type="button" class="secondary" id="copyDiag">Copiar resultado</button><button type="button" id="closeDiag">Cerrar</button></div></div></dialog>
 <dialog id="editor"><form method="dialog" id="editform"><div class="dialog-inner"><h2 id="dialogtitle">Editar trabajo</h2><div class="fields"><label>Nombre del trabajo<input id="f-name" required maxlength="160"></label><label>Enlace directo a la conversación de ChatGPT<input id="f-url" type="url" placeholder="https://chatgpt.com/c/..."></label><label>Archivo o carpeta local (ruta de Windows, si existe)<input id="f-file" placeholder="C:\Users\...\archivo.html"></label><label>Enlace de la aplicación en Chrome (si existe)<input id="f-app" type="url" placeholder="chrome-extension://…/PatenteCL.html"></label><label>Categoría<select id="f-category"></select></label><label>Descripción / observaciones<textarea id="f-notes" maxlength="2000" rows="3" placeholder="Información del trabajo y próximos pasos"></textarea></label><label>Número de modificación actual<input id="f-rev" type="number" min="0" step="1" readonly title="Se incrementa automáticamente al modificar la ficha"></label><div class="hint" id="autoHint">Los cambios se guardan automáticamente mientras editas una ficha existente; no necesitas cerrar el programa.</div></div><div class="dialog-actions"><span id="draftHint"></span><button type="button" class="secondary" id="cancel">Cerrar</button><button type="submit" id="submitEditor">Guardar y cerrar</button></div></div></form></dialog><dialog id="historyDialog"><div class="dialog-inner"><div class="paneltop"><div><h2>Historial de modificaciones</h2><p class="hint">Se conservan hasta 25 estados anteriores en este navegador.</p></div><button type="button" class="secondary" id="closeHistory">Cerrar</button></div><div id="historyList"></div></div></dialog><dialog id="patenteSetup"><div class="dialog-inner"><h2>Activar el botón de Patente CL</h2><p class="hint">El complemento de Patente CL funciona de manera local en Chrome; no se puede iniciar desde GitHub Pages.</p><ol class="setup-steps"><li>Extrae <b>PatenteCL-complemento-v0.3.4.zip</b> y reemplaza los cinco archivos en la misma carpeta del complemento activo.</li><li>En <b>chrome://extensions</b>, busca Patente CL y pulsa <b>Recargar</b>. En <b>Detalles</b>, activa <b>Permitir acceso a URLs de archivo</b>.</li><li>Guarda este Centro de Control en tu carpeta habitual y ábrelo en Chrome. Pulsa <b>Comprobar acceso</b> y después <b>Abrir Patente CL</b>.</li></ol><p class="hint">También puedes copiar esta dirección y pegarla arriba, en la barra de direcciones de Chrome. Para cambiarla, edita la ficha de Patente CL.</p><input class="app-link" id="patenteLink" readonly aria-label="Dirección del complemento"><div class="app-help-actions"><button id="checkPatente">Comprobar acceso</button><button class="secondary" id="copyPatente">Copiar dirección</button><button class="outline" id="closePatenteSetup">Cerrar</button></div><p class="setup-result" id="patenteCheckResult" role="status"></p></div></dialog><div id="toast" role="status"></div>
 <script>
 (()=>{'use strict';
-const APP_VERSION="3.9.0";
+const APP_VERSION="4.0.0";
 const KEY='centro_control_chatgpt_v1';
 const CATALOG_KEY='centro_control_chatgpt_catalog_v2_migrated';
 const HISTORY_KEY='centro_control_chatgpt_historial_v3';
@@ -40,6 +40,7 @@ const META_KEY='centro_control_chatgpt_meta_v3';
 const DRAFT_KEY='centro_control_chatgpt_borrador_v3';
 const PATENTE_MERGE_KEY="centro_control_patente_unificado_v35";
 const PATENTE_MIGRATION_KEY='centro_control_patente_034';
+const LINKED_FILES=Object.freeze({'precio-polar':'PrecioPolarCasacas-chatgpt.xlsm','patente-cl':'PatenteCL.html','verificador-video':'Verificador_fecha_video.html'});
 const PATENTE_DEFAULT={appUrl:'',appVersion:'0.3.4',appDate:'08/10/2026',filePath:''};
 const seed=[{"id":"consultar-propiedades","name":"Consultar Propiedades","category":"Consultas y gestión","url":"","filePath":"","notes":"Tema fijado en ChatGPT; pendiente registrar enlace a su conversación.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"hacer-videos","name":"Hacer Videos con Música","category":"Fotos y multimedia","url":"","filePath":"","notes":"Tema fijado en ChatGPT; pendiente registrar enlace a su conversación.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"precio-polar","name":"Precio Polar ChatGPT","category":"Compras y precios","url":"","filePath":"","notes":"Planilla Excel con precios de polares y casacas, descuentos y seguimiento de proveedores.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"patente-cl","name":"Patente CL — tres fuentes gratuitas","category":"Herramientas HTML","url":"","filePath":"","notes":"Escribe la patente y consulta 1. PatenteChile, 2. AutoRiesgo y 3. AACH · Remates. Los resultados se reúnen en la tabla; el informe se guarda como PDF vertical. Los accesos pagados están en naranja.","revision":0,"updatedAt":null,"fileModifiedAt":null,"appUrl":"","appVersion":"0.3.4","appDate":"08/10/2026"},{"id":"verificador-video","name":"Verificador de fecha de videos","category":"Herramientas HTML","url":"","filePath":"","notes":"Herramienta para investigar la fecha o procedencia de videos publicados en redes sociales.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"revision-vehiculos","name":"Revisión de vehículos y antecedentes","category":"Vehículos","url":"","filePath":"","notes":"Proyecto de consulta de vehículos en Chile y verificación de distintas fuentes; pendiente enlace de conversación.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"polares-abrigados","name":"Comparación de polares muy abrigados","category":"Compras y precios","url":"","filePath":"","notes":"Modelos sin chiporro; comparar gramaje, calidad, precios Cyber y enlaces directos a proveedores.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"skechers","name":"Zapatillas Skechers — dolor plantar","category":"Compras y precios","url":"","filePath":"","notes":"Selección de zapatillas acolchadas, talla 41,5 y ofertas, priorizando modelos con sujeción del talón.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"bergere","name":"Bergères reclinables — comparación","category":"Compras y precios","url":"","filePath":"","notes":"Comparación de modelos, precios, despacho a Linares y descuentos.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"ropa-cama","name":"Sábanas, toallas y ropa de cama","category":"Compras y precios","url":"","filePath":"","notes":"Comparaciones de calidad, medidas, composición y ofertas.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"viajes-falabella","name":"Viajes Falabella — módulo de consultas","category":"Viajes","url":"","filePath":"","notes":"Módulo solicitado para paquetes, vuelos, hotel, desayuno, fechas, precios y registro de consultas.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"comparador-camboriu","name":"Comparación paquetes Camboriú — Excel","category":"Viajes","url":"","filePath":"","notes":"Comparación de paquetes Falabella por fechas y hotel; trabajo anterior incompleto, no asumir precios actualizados.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"viaje-brasil","name":"Viaje Balneário Camboriú y Florianópolis","category":"Viajes","url":"","filePath":"","notes":"Revisión de hoteles, ubicación, PDF de cotizaciones y paquetes para Brasil.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"fotos-iphone","name":"Fotos iPhone con fecha, hora y ubicación","category":"Fotos y multimedia","url":"","filePath":"","notes":"Atajo para insertar fecha, hora y ubicación en una copia de las fotografías.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"informe-economico","name":"Informe económico diario Chile","category":"Informes y alertas","url":"","filePath":"","notes":"Indicadores dólar, UF, UTM, IPC y Brent; tarea de lunes a viernes 10:00, con PDF configurado.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"noticias-linares","name":"Noticias de Linares — informe diario","category":"Informes y alertas","url":"","filePath":"","notes":"Hasta diez noticias del día anterior; tarea de lunes a viernes 09:30, con PDF configurado.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"farandula","name":"Farándula chilena — resumen diario","category":"Informes y alertas","url":"","filePath":"","notes":"Resumen de noticias del espectáculo; tarea de lunes a viernes 09:20, con PDF configurado.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"cultura-general","name":"Cultura general — cinco preguntas diarias","category":"Informes y alertas","url":"","filePath":"","notes":"Cinco preguntas y respuestas; tarea conjunta con ENAP, lunes a viernes 12:00, con PDF configurado.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"combustibles-enap","name":"ENAP — variaciones de combustibles","category":"Informes y alertas","url":"","filePath":"","notes":"Seguimiento de informe ENAP los miércoles al mediodía, con PDF si existe nueva publicación.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"caso-cloro","name":"Caso Cloro — Linares","category":"Informes y alertas","url":"","filePath":"","notes":"Seguimiento de novedades judiciales cada seis horas, solo si hay información nueva. Sin PDF.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"riegomaq","name":"RIEGOMAQ — propuesta control financiero","category":"Administración y finanzas","url":"","filePath":"","notes":"Propuesta de control de flujos, fondos a rendir, conciliaciones, proveedores y resultados por trabajo.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"comparacion-precios-hogar","name":"Comparaciones de precios de hogar","category":"Compras y precios","url":"","filePath":"","notes":"Planillas de comparación de precios entre tiendas y productos.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"carplay","name":"CarPlay inalámbrico — Nissan X-Trail","category":"Vehículos","url":"","filePath":"","notes":"Evaluación de adaptadores inalámbricos para CarPlay, compatibilidad y calidad.","revision":0,"updatedAt":null,"fileModifiedAt":null},{"id":"centro-control","name":"Mi Centro de Control ChatGPT","category":"Herramientas HTML","url":"","filePath":"","notes":"Esta página; trabajos a la izquierda, alertas a la derecha y copias de seguridad.","revision":0,"updatedAt":null,"fileModifiedAt":null}];
 const categories=["Administración y finanzas", "Compras y precios", "Consultas y gestión", "Fotos y multimedia", "Herramientas HTML", "Informes y alertas", "Vehículos", "Viajes"];
@@ -52,7 +53,7 @@ const compactDate=s=>{if(!s)return '';const d=new Date(s);return Number.isNaN(d.
 function safeUrl(u){try{const x=new URL(u);return x.protocol==='https:'&&['chatgpt.com','chat.openai.com'].includes(x.hostname)&&/^\/(c|share)\//.test(x.pathname)?x.href:null}catch{return null}}
 function fileUrl(path){if(!path)return null;try{const p=String(path).trim();let u;if(/^file:\/\/\/[a-z]:\//i.test(p))u=new URL(p);else if(/^[a-z]:[\\/]/i.test(p))u=new URL('file:///'+p.replace(/\\/g,'/'));else return null;return u.protocol==='file:'&&/^\/[a-z]:\//i.test(decodeURIComponent(u.pathname))?u.href:null}catch{return null}}
 function safeAppUrl(value){try{const u=new URL(value);return u.protocol==='chrome-extension:'&&/^[a-p]{32}$/.test(u.hostname)&&u.pathname==='/PatenteCL.html'&&!u.search&&!u.hash&&!u.username&&!u.password&&!u.port?u.href:null}catch{return null}}
-function sane(w){return {id:String(w.id||'w-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)),name:String(w.name||'Sin título'),category:String(w.category||'Otros'),url:safeUrl(w.url)||'',filePath:String(w.filePath||''),notes:String(w.notes||''),revision:Math.max(0,parseInt(w.revision,10)||0),updatedAt:w.updatedAt||null,fileModifiedAt:w.fileModifiedAt||null,appUrl:safeAppUrl(w.appUrl)||(w.id==='patente-cl'?PATENTE_DEFAULT.appUrl:''),appVersion:String(w.appVersion||(w.id==='patente-cl'?PATENTE_DEFAULT.appVersion:'')),appDate:String(w.appDate||(w.id==='patente-cl'?PATENTE_DEFAULT.appDate:''))}}
+function sane(w){return {id:String(w.id||'w-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)),name:String(w.name||'Sin título'),category:String(w.category||'Otros'),url:safeUrl(w.url)||'',filePath:String(w.filePath||''),fileName:LINKED_FILES[String(w.id||'')]===w.fileName?w.fileName:'',notes:String(w.notes||''),revision:Math.max(0,parseInt(w.revision,10)||0),updatedAt:w.updatedAt||null,fileModifiedAt:w.fileModifiedAt||null,appUrl:safeAppUrl(w.appUrl)||(w.id==='patente-cl'?PATENTE_DEFAULT.appUrl:''),appVersion:String(w.appVersion||(w.id==='patente-cl'?PATENTE_DEFAULT.appVersion:'')),appDate:String(w.appDate||(w.id==='patente-cl'?PATENTE_DEFAULT.appDate:''))}}
 let works=[];try{const old=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(old)&&old.every(w=>w&&typeof w.name==='string'&&typeof w.id==='string'))works=old.map(sane)}catch{};
 if(!works.length)works=seed.map(sane);
 // Primera migración: añadir temas descubiertos, conservar enlaces, notas, revisiones y registros personales.
@@ -84,7 +85,7 @@ function backupLocal(reason,snapshot=null){
   const d=JSON.parse(localStorage.getItem(LOCAL_BACKUPS_KEY)||'[]');
   const a=Array.isArray(d)?d:[];
   const hour=new Date().toISOString().slice(0,13);
-  if(!a.length||a[0].hour!==hour){
+  if(!a.length||JSON.stringify(a[0].works)!==JSON.stringify(snapshot||works)){
    a.unshift({hour,reason,at:now(),works:clone(snapshot||works),meta:{...meta}});
    localStorage.setItem(LOCAL_BACKUPS_KEY,JSON.stringify(a.slice(0,12)));
   }
@@ -103,6 +104,76 @@ async function setHandle(key,handle){const db=await openHandleDB();return new Pr
 async function getHandle(key){const db=await openHandleDB();return new Promise((resolve,reject)=>{const tx=db.transaction('config','readonly');const req=tx.objectStore('config').get(key);req.onsuccess=()=>{db.close();resolve(req.result||null)};req.onerror=()=>{db.close();reject(req.error)}})}
 function validPackage(data){return !!data&&Array.isArray(data.works)&&data.works.length<=5000&&data.works.every(w=>w&&typeof w.id==='string'&&typeof w.name==='string')}
 function worksSame(data){return validPackage(data)&&JSON.stringify(data.works.map(sane))===JSON.stringify(works.map(sane))}
+
+function additiveMerge(remoteRows,localRows){
+ const remoteById=new Map(remoteRows.map(x=>[x.id,sane(x)]));
+ if(remoteRows.length!==localRows.length||remoteById.size!==remoteRows.length||localRows.some(w=>!remoteById.has(w.id)))return null;
+ const result=[],fields=['name','category','notes','appVersion','appDate','url','filePath','fileName','appUrl'],additive=['url','filePath','fileName','appUrl'];
+ for(const local of localRows){
+  const a=sane(local),b=remoteById.get(a.id),v={...a};
+  for(const field of fields){
+   if(a[field]===b[field])continue;
+   if(additive.includes(field)&&!a[field]&&b[field])v[field]=b[field];
+   else if(additive.includes(field)&&a[field]&&!b[field])v[field]=a[field];
+   else return null;
+  }
+  v.revision=Math.max(a.revision,b.revision);
+  v.updatedAt=[a.updatedAt,b.updatedAt].filter(Boolean).sort().at(-1)||null;
+  v.fileModifiedAt=[a.fileModifiedAt,b.fileModifiedAt].filter(Boolean).sort().at(-1)||null;
+  result.push(sane(v));
+ }
+ return result;
+}
+async function reconcileAdditive(raw,remote){
+ if(!linkedFolder||!validPackage(remote))return false;
+ const merged=additiveMerge(remote.works,works);
+ if(!merged)return false;
+ if(!await saveSnapshot(JSON.stringify(packageData(),null,2),'Antes-fusion-Chrome'))return false;
+ if(!await saveSnapshot(raw,'Antes-fusion-OneDrive'))return false;
+ const before=clone(works);works=merged;
+ if(!persist('Fusionar vínculos sin perder datos',before)){works=before;return false}
+ syncBaseline=raw;syncConflict=false;syncReady=true;syncError='';status(true);
+ await syncToLinkedFile();
+ return syncReady&&!syncConflict;
+}
+async function discoverKnownFiles(askPermission=false){
+ if(!linkedFolder)return 0;
+ try{
+  let permission=await linkedFolder.queryPermission({mode:'read'});
+  if(permission!=='granted'&&askPermission)permission=await linkedFolder.requestPermission({mode:'read'});
+  if(permission!=='granted')return 0;
+  const found=[];
+  for(const [id,file] of Object.entries(LINKED_FILES)){
+   try{await linkedFolder.getFileHandle(file);found.push({id,file})}
+   catch(e){if(e?.name!=='NotFoundError')throw e}
+  }
+  const before=clone(works);let changed=0;
+  for(const {id,file} of found){
+   const w=works.find(x=>x.id===id);
+   if(w&&!w.fileName){w.fileName=file;w.revision=(w.revision||0)+1;w.updatedAt=now();changed++}
+  }
+  if(changed){
+   if(!persist('Archivos detectados en OneDrive',before)){works=before;return 0}
+   refillCats();render();
+   if(syncConflict&&linkedFile)await inspectRemote();
+  }
+  return found.length;
+ }catch(e){syncError='Error al revisar archivos: '+(e?.message||'acceso denegado');status(true);return 0}
+}
+async function downloadLinkedFile(w){
+ const fileName=LINKED_FILES[w.id];
+ if(!fileName||w.fileName!==fileName||!linkedFolder){flash('El archivo no está disponible en la carpeta vinculada.');return}
+ try{
+  let perm=await linkedFolder.queryPermission({mode:'read'});
+  if(perm!=='granted')perm=await linkedFolder.requestPermission({mode:'read'});
+  if(perm!=='granted'){flash('Chrome necesita permiso para leer OneDrive.');return}
+  const file=await(await linkedFolder.getFileHandle(fileName)).getFile(),obj=URL.createObjectURL(file),anchor=document.createElement('a');
+  anchor.href=obj;anchor.download=fileName;document.body.appendChild(anchor);anchor.click();anchor.remove();
+  setTimeout(()=>URL.revokeObjectURL(obj),30000);
+  flash('Copia descargada: '+fileName+'. El original no se modifica.');
+ }catch(e){flash('No pude descargar el archivo: '+(e?.message||'acceso no disponible'))}
+}
+
 async function remoteText(){return await (await linkedFile.getFile()).text()}
 async function saveSnapshot(raw,kind){
  if(!linkedFolder||!raw)return false;
@@ -121,7 +192,10 @@ async function inspectRemote(){
  let data;try{data=JSON.parse(raw)}catch{syncConflict=true;syncReady=false;syncError='archivo no válido; no se sobrescribirá';status(true);return}
  if(!validPackage(data)){syncConflict=true;syncReady=false;syncError='respaldo no reconocido';status(true);return}
  if(worksSame(data)){syncBaseline=raw;syncConflict=false;syncReady=true}
- else{syncReady=false;syncConflict=true;syncError='diferencias entre Chrome y OneDrive'}
+ else{
+  syncReady=false;syncConflict=true;syncError='diferencias entre Chrome y OneDrive';
+  if(await reconcileAdditive(raw,data))return;
+ }
  status(true);
 }
 async function loadHandle(){
@@ -129,6 +203,7 @@ async function loadHandle(){
   linkedFolder=await getHandle('backupFolder');
   linkedFile=linkedFolder?await linkedFolder.getFileHandle(SYNC_FILENAME):await getHandle('backupHandle');
   if(linkedFile)await inspectRemote();
+  if(linkedFolder)await discoverKnownFiles(false);
  }catch(e){syncError='vuelve a vincular la carpeta';status(true)}
 }
 async function writeLinkedFile(){
@@ -186,51 +261,20 @@ $('#linksave').onclick=async()=>{
   await setHandle('backupFolder',folder);await inspectRemote();
   if(syncConflict){flash('Esta carpeta ya tiene datos distintos. Pulsa «Revisar OneDrive» para decidir cuál conservar.')}
   else if(!syncReady){flash('Carpeta registrada. Pulsa «Revisar OneDrive» para conceder acceso y terminar.')}
-  else{if(!existed)await syncToLinkedFile();flash('Carpeta vinculada. Verifica que esté dentro de OneDrive y que sincronice en Windows.')}
+  else{if(!existed)await syncToLinkedFile();flash('Carpeta vinculada. Se detectarán archivos compatibles.')}
+  await discoverKnownFiles(false);
  }catch(e){flash(e.name==='AbortError'?'No se eligió carpeta. Chrome conserva los datos.':(e.message||'No fue posible vincular OneDrive.'))}
 };
 $('#syncNow').onclick=()=>resolveRemote();
-// Asociar los tres archivos observados en OneDrive sin publicar rutas personales en GitHub.
-// Se verifica el nombre en la carpeta elegida antes de registrar una ruta local.
+// La vinculación no pide rutas de Windows; usa la carpeta OneDrive autorizada.
 $('#linkKnown').onclick=async()=>{
  const button=$('#linkKnown');button.disabled=true;
  try{
-  if(!linkedFolder){flash('Primero vincula la carpeta OneDrive desde el botón azul.');return}
-  let permission=await linkedFolder.queryPermission({mode:'read'});
-  if(permission!=='granted')permission=await linkedFolder.requestPermission({mode:'read'});
-  if(permission!=='granted'){flash('Chrome necesita permiso de lectura de la carpeta para comprobar los archivos.');return}
-  const candidates=[
-   {id:'precio-polar',file:'PrecioPolarCasacas-chatgpt.xlsm'},
-   {id:'patente-cl',file:'PatenteCL.html'},
-   {id:'verificador-video',file:'Verificador_fecha_video.html'}
-  ];
-  const found=[];
-  for(const item of candidates){
-   try{await linkedFolder.getFileHandle(item.file);found.push(item)}catch(e){if(e?.name!=='NotFoundError')throw e}
-  }
-  if(!found.length){flash('No encontré ninguno de esos tres archivos en la carpeta elegida.');return}
-  const entered=prompt('Encontré '+found.length+' de 3 archivos. Pega la ruta de la carpeta ChatGPT de tu OneDrive en Windows. Solo se guarda en tus datos, nunca en GitHub:', '');
-  if(entered===null)return;
-  const base=entered.trim().replace(/^["']|["']$/g,'').replace(/[\\/]+$/,'').replace(/\//g,'\\');
-  if(!/^[A-Za-z]:\\/.test(base)||!/\\ChatGPT$/i.test(base)){flash('La ruta debe empezar con C:\\ y terminar en \\ChatGPT. No se modificó ninguna ficha.');return}
-  const before=clone(works);
-  let linked=0,skipped=0;
-  for(const item of found){
-   const w=works.find(x=>x.id===item.id);
-   if(!w){skipped++;continue}
-   const path=base+'\\'+item.file;
-   if(w.filePath&&w.filePath!==path){skipped++;continue}
-   if(!w.filePath){w.filePath=path;w.updatedAt=now();w.revision=(w.revision||0)+1;linked++}
-  }
-  if(linked){
-   if(!persist('Asociar archivos conocidos a sus fichas',before)){works=before;flash('No se pudo guardar. Conserva tu respaldo y vuelve a intentarlo.');return}
-   refillCats();render();
-  }
-  flash(linked+' archivos asociados; '+skipped+' omitidos porque tenían otra ruta o ficha ausente. Para abrirlos desde la web se copia la ruta a Windows.');
- }catch(e){flash('No se pudo revisar la carpeta: '+(e?.message||'error de Chrome'))}
- finally{button.disabled=false}
+  if(!linkedFolder){flash('Primero vincula la carpeta de OneDrive.');return}
+  const n=await discoverKnownFiles(true);
+  flash(n?n+' archivos encontrados y vinculados. No es necesario pegar una ruta.':'Sin archivos detectados. Comprueba el permiso de Chrome.');
+ }finally{button.disabled=false}
 };
-
 // Este respaldo manual crea archivos nuevos con fecha; no modifica ni reemplaza el archivo principal.
 $('#backupNow').onclick=async()=>{
  const button=$('#backupNow'),message=$('#manualBackupState');
@@ -270,16 +314,17 @@ window.addEventListener('focus',()=>{if(!linkedFile||Date.now()-lastRemoteCheck<
 async function runDiagnostics(){
  const lines=['CENTRO DE CONTROL · DIAGNÓSTICO v'+APP_VERSION,'Fecha: '+new Date().toLocaleString('es-CL'),''];
  const list=works.slice(),chats=list.filter(w=>!!safeUrl(w.url)),files=list.filter(w=>!!fileUrl(w.filePath));
- const apps=list.filter(w=>!!safeAppUrl(w.appUrl));
- const missing=list.filter(w=>!safeUrl(w.url)&&!fileUrl(w.filePath)&&!safeAppUrl(w.appUrl));
+ const apps=list.filter(w=>!!safeAppUrl(w.appUrl)),linked=list.filter(w=>!!w.fileName);
+ const missing=list.filter(w=>!safeUrl(w.url)&&!fileUrl(w.filePath)&&!w.fileName&&!safeAppUrl(w.appUrl));
  lines.push('CATÁLOGO: '+list.length+' trabajos, ordenados alfabéticamente.');
  lines.push('Conversaciones con enlace registrado: '+chats.length+' de '+list.length+'.');
  lines.push('Fichas con ruta de Windows registrada (sin verificar apertura): '+files.length+'.');
+ lines.push('Archivos vinculados desde OneDrive: '+linked.length+'.');
  lines.push('Fichas con acceso de extensión configurado: '+apps.length+'.');
  lines.push('Fichas sin enlaces ni rutas: '+missing.length+'.');
  if(missing.length)lines.push('Pendientes: '+missing.map(w=>w.name).join('; ')+'.');
  lines.push('IMPORTANTE: los enlaces registrados no se abren ni se prueban contra servidores durante este diagnóstico.');
- lines.push('Los archivos de Windows y extensiones de Chrome no pueden abrirse desde GitHub Pages.');
+ lines.push('Los archivos detectados en OneDrive se pueden descargar como copia. La web no abre archivos de Windows ni extensiones de Chrome directamente.');
  lines.push('');
  lines.push('DATOS: '+list.length+' fichas guardadas en este navegador.');
  lines.push('Historial local: '+history.length+' cambios disponibles.');
@@ -342,10 +387,10 @@ function commitEditor(close){
 }
 function flash(t){$('#toast').textContent=t;$('#toast').style.display='block';clearTimeout(flash.timer);flash.timer=setTimeout(()=>$('#toast').style.display='none',4800)}
 function render(){renderPatenteAccess();const q=$('#search').value.trim().toLocaleLowerCase('es'),f=$('#filter').value,c=$('#category').value;
-const arr=works.filter(x=>(x.name+' '+x.notes+' '+x.category+' '+(x.filePath||'')+' '+(x.appVersion||'')).toLocaleLowerCase('es').includes(q)&&(c==='all'||x.category===c)&&(f==='all'||(f==='linked'?!!safeUrl(x.url):f==='file'?!!(fileUrl(x.filePath)||safeAppUrl(x.appUrl)):!safeUrl(x.url)))).sort((a,b)=>a.name.localeCompare(b.name,'es'));
+const arr=works.filter(x=>(x.name+' '+x.notes+' '+x.category+' '+(x.filePath||'')+' '+(x.appVersion||'')).toLocaleLowerCase('es').includes(q)&&(c==='all'||x.category===c)&&(f==='all'||(f==='linked'?!!safeUrl(x.url):f==='file'?!!(fileUrl(x.filePath)||x.fileName||safeAppUrl(x.appUrl)):!safeUrl(x.url)))).sort((a,b)=>a.name.localeCompare(b.name,'es'));
 $('#summary').textContent=`${works.length} trabajos · 5 alertas registradas`;
 $('#workcount').textContent=`${arr.length} de ${works.length} trabajos · orden alfabético`;
-$('#works').innerHTML=arr.length?arr.map(w=>`<article class="item"><div class="itemhead"><h3>📌 ${esc(w.name)}</h3><span class="tag">Modificación N.º ${Number(w.revision)||0}</span></div><span class="cat">${esc(w.category||'Otros')}</span><div class="meta">Última edición de la ficha: ${esc(format(w.updatedAt))}</div>${w.fileModifiedAt?`<div class="filemeta">Archivo visto en OneDrive: ${esc(compactDate(w.fileModifiedAt))}</div>`:''}${w.filePath?`<div class="filemeta">📁 ${esc(w.filePath.split(/[\\/]/).pop())}</div>`:''}${safeAppUrl(w.appUrl)?`<div class="app-version">Acceso configurado · v${esc(w.appVersion)} · ${esc(w.appDate)}</div>`:''}${w.notes?`<div class="alertline">${esc(w.notes)}</div>`:''}<div class="actions">${safeAppUrl(w.appUrl)?`<button data-act="app" data-id="${esc(w.id)}">↗ Abrir Patente CL</button>`:''}<button data-act="open" data-id="${esc(w.id)}">↗ Abrir conversación</button>${fileUrl(w.filePath)?`<button class="filebtn" data-act="file" data-id="${esc(w.id)}">${safeAppUrl(w.appUrl)?'📁 Carpeta del complemento':'📁 Abrir archivo'}</button>`:''}<button class="secondary" data-act="edit" data-id="${esc(w.id)}">✎ Editar</button><button class="secondary" data-act="print" data-id="${esc(w.id)}">🖨 Imprimir</button><button class="outline" data-act="delete" data-id="${esc(w.id)}">Eliminar ficha</button></div></article>`).join(''):'<div class="empty">No hay trabajos que coincidan con tu búsqueda.</div>';
+$('#works').innerHTML=arr.length?arr.map(w=>`<article class="item"><div class="itemhead"><h3>📌 ${esc(w.name)}</h3><span class="tag">Modificación N.º ${Number(w.revision)||0}</span></div><span class="cat">${esc(w.category||'Otros')}</span><div class="meta">Última edición de la ficha: ${esc(format(w.updatedAt))}</div>${w.fileModifiedAt?`<div class="filemeta">Archivo visto en OneDrive: ${esc(compactDate(w.fileModifiedAt))}</div>`:''}${w.filePath?`<div class="filemeta">📁 ${esc(w.filePath.split(/[\\/]/).pop())}</div>`:''}${w.fileName?`<div class="filemeta">☁ Archivo OneDrive: ${esc(w.fileName)}</div>`:''}${safeAppUrl(w.appUrl)?`<div class="app-version">Acceso configurado · v${esc(w.appVersion)} · ${esc(w.appDate)}</div>`:''}${w.notes?`<div class="alertline">${esc(w.notes)}</div>`:''}<div class="actions">${safeAppUrl(w.appUrl)?`<button data-act="app" data-id="${esc(w.id)}">↗ Abrir Patente CL</button>`:''}<button data-act="open" data-id="${esc(w.id)}">↗ Abrir conversación</button>${w.fileName?`<button class="filebtn" data-act="linked" data-id="${esc(w.id)}">⬇ Descargar copia</button>`:''}${fileUrl(w.filePath)?`<button class="filebtn" data-act="file" data-id="${esc(w.id)}">📁 Copiar ruta</button>`:''}<button class="secondary" data-act="edit" data-id="${esc(w.id)}">✎ Editar</button><button class="secondary" data-act="print" data-id="${esc(w.id)}">🖨 Imprimir</button><button class="outline" data-act="delete" data-id="${esc(w.id)}">Eliminar ficha</button></div></article>`).join(''):'<div class="empty">No hay trabajos que coincidan con tu búsqueda.</div>';
 $('#alerts').innerHTML=alerts.map(a=>`<article class="item"><div class="itemhead"><h3>${esc(a.name)}</h3><span class="status">● ${esc(a.status)}</span></div><div class="meta"><b>${esc(a.days)}</b> · ${esc(a.time)}<br>PDF: ${esc(a.pdf)}</div></article>`).join('')}
 function refillCats(){for(const [selector,includeAll] of [['#category',true],['#f-category',false]]){const el=$(selector);const last=el.value;el.innerHTML=(includeAll?'<option value="all">Todas las categorías</option>':'')+[...new Set([...categories,...works.map(w=>w.category||'Otros')])].sort((a,b)=>a.localeCompare(b,'es')).map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');if([...el.options].some(x=>x.value===last))el.value=last}}
 function openEditor(w){
@@ -367,7 +412,7 @@ $('#editform').addEventListener('change',()=>{saveDraft();if(!editing)return;cle
 $('#cancel').onclick=()=>{if(editing){if(validValues(formValues(),false))commitEditor(false)}$('#editor').close();flash('Las modificaciones válidas ya quedaron guardadas')};
 $('#new').onclick=()=>{clearDraft();openEditor(null)};
 $('#search').oninput=render;$('#filter').onchange=render;$('#category').onchange=render;
-$('#works').onclick=async e=>{const b=e.target.closest('button[data-act]');if(!b)return;const w=works.find(x=>x.id===b.dataset.id);if(!w)return;switch(b.dataset.act){case 'app':launchApp(w);break;case 'edit':openEditor(w);break;case 'open':{const url=safeUrl(w.url);if(url)window.open(url,'_blank','noopener,noreferrer');else{flash('Registra primero el enlace real de esa conversación.');openEditor(w)}break}case 'file':{const url=fileUrl(w.filePath);if(url){if(location.protocol==='file:'){const child=window.open(url,'_blank');if(!child)flash('Chrome bloqueó el archivo local. Ábrelo desde Windows.')}else{try{await navigator.clipboard.writeText(w.filePath);flash('Ruta copiada. Ábrela desde el Explorador de archivos de Windows.')}catch{flash('La web no puede abrir archivos locales. Consulta la ruta con Editar.')}}}break}case 'print':printOne(w);break;case 'delete':if(confirm('¿Eliminar la ficha de «'+w.name+'»? Esto NO elimina su conversación ni el archivo de OneDrive.')){const prev=clone(works);works=works.filter(x=>x.id!==w.id);persist('Eliminar ficha: '+w.name,prev);refillCats();render()}break}};
+$('#works').onclick=async e=>{const b=e.target.closest('button[data-act]');if(!b)return;const w=works.find(x=>x.id===b.dataset.id);if(!w)return;switch(b.dataset.act){case 'app':launchApp(w);break;case 'edit':openEditor(w);break;case 'linked':await downloadLinkedFile(w);break;case 'open':{const url=safeUrl(w.url);if(url)window.open(url,'_blank','noopener,noreferrer');else{flash('Registra primero el enlace real de esa conversación.');openEditor(w)}break}case 'file':{const url=fileUrl(w.filePath);if(url){if(location.protocol==='file:'){const child=window.open(url,'_blank');if(!child)flash('Chrome bloqueó el archivo local. Ábrelo desde Windows.')}else{try{await navigator.clipboard.writeText(w.filePath);flash('Ruta copiada. Ábrela desde el Explorador de archivos de Windows.')}catch{flash('La web no puede abrir archivos locales. Consulta la ruta con Editar.')}}}break}case 'print':printOne(w);break;case 'delete':if(confirm('¿Eliminar la ficha de «'+w.name+'»? Esto NO elimina su conversación ni el archivo de OneDrive.')){const prev=clone(works);works=works.filter(x=>x.id!==w.id);persist('Eliminar ficha: '+w.name,prev);refillCats();render()}break}};
 function printHtml(title,body){
  const win=window.open('','_blank');
  if(!win){flash('Chrome bloqueó la ventana de impresión; permite ventanas emergentes para este archivo.');return}
