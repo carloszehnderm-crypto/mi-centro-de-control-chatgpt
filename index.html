@@ -188,7 +188,7 @@ $('#linksave').onclick=async()=>{
   else{if(!existed)await syncToLinkedFile();flash('Carpeta vinculada. Verifica que esté dentro de OneDrive y que sincronice en Windows.')}
  }catch(e){flash(e.name==='AbortError'?'No se eligió carpeta. Chrome conserva los datos.':(e.message||'No fue posible vincular OneDrive.'))}
 };
-$('#syncNow').onclick=()=>void resolveRemote();
+$('#syncNow').onclick=()=>resolveRemote();
 window.addEventListener('focus',()=>{if(!linkedFile||Date.now()-lastRemoteCheck<60000)return;lastRemoteCheck=Date.now();void inspectRemote()});
 function saveDraft(){try{localStorage.setItem(DRAFT_KEY,JSON.stringify({id:editing,at:now(),values:formValues()}));$('#draftHint').textContent='Edición temporal protegida'}catch{}}
 function clearDraft(){try{localStorage.removeItem(DRAFT_KEY)}catch{}}
