@@ -53,7 +53,7 @@ const compactDate=s=>{if(!s)return '';const d=new Date(s);return Number.isNaN(d.
 function safeUrl(u){try{const x=new URL(u);return x.protocol==='https:'&&['chatgpt.com','chat.openai.com'].includes(x.hostname)&&/^\/(c|share)\//.test(x.pathname)?x.href:null}catch{return null}}
 function fileUrl(path){if(!path)return null;try{const p=String(path).trim();let u;if(/^file:\/\/\/[a-z]:\//i.test(p))u=new URL(p);else if(/^[a-z]:[\\/]/i.test(p))u=new URL('file:///'+p.replace(/\\/g,'/'));else return null;return u.protocol==='file:'&&/^\/[a-z]:\//i.test(decodeURIComponent(u.pathname))?u.href:null}catch{return null}}
 function safeAppUrl(value){try{const u=new URL(value);return u.protocol==='chrome-extension:'&&/^[a-p]{32}$/.test(u.hostname)&&u.pathname==='/PatenteCL.html'&&!u.search&&!u.hash&&!u.username&&!u.password&&!u.port?u.href:null}catch{return null}}
-function sane(w){return {id:String(w.id||'w-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)),name:String(w.name||'Sin título'),category:String(w.category||'Otros'),url:safeUrl(w.url)||'',filePath:String(w.filePath||''),fileName:LINKED_FILES[String(w.id||'')]===w.fileName?w.fileName:'',notes:String(w.notes||''),revision:Math.max(0,parseInt(w.revision,10)||0),updatedAt:w.updatedAt||null,fileModifiedAt:w.fileModifiedAt||null,appUrl:safeAppUrl(w.appUrl)||(w.id==='patente-cl'?PATENTE_DEFAULT.appUrl:''),appVersion:String(w.appVersion||(w.id==='patente-cl'?PATENTE_DEFAULT.appVersion:'')),appDate:String(w.appDate||(w.id==='patente-cl'?PATENTE_DEFAULT.appDate:''))}}
+function sane(w){return {id:String(w.id||'w-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)),name:String(w.name||'Sin título'),category:String(w.category||'Otros'),url:safeUrl(w.url)||'',filePath:String(w.filePath||''),fileName:LINKED_FILES[w.id]&&LINKED_FILES[w.id]===w.fileName?w.fileName:'',notes:String(w.notes||''),revision:Math.max(0,parseInt(w.revision,10)||0),updatedAt:w.updatedAt||null,fileModifiedAt:w.fileModifiedAt||null,appUrl:safeAppUrl(w.appUrl)||(w.id==='patente-cl'?PATENTE_DEFAULT.appUrl:''),appVersion:String(w.appVersion||(w.id==='patente-cl'?PATENTE_DEFAULT.appVersion:'')),appDate:String(w.appDate||(w.id==='patente-cl'?PATENTE_DEFAULT.appDate:''))}}
 let works=[];try{const old=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(old)&&old.every(w=>w&&typeof w.name==='string'&&typeof w.id==='string'))works=old.map(sane)}catch{};
 if(!works.length)works=seed.map(sane);
 // Primera migración: añadir temas descubiertos, conservar enlaces, notas, revisiones y registros personales.
@@ -194,7 +194,8 @@ async function inspectRemote(){
  if(worksSame(data)){syncBaseline=raw;syncConflict=false;syncReady=true}
  else{
   syncReady=false;syncConflict=true;syncError='diferencias entre Chrome y OneDrive';
-  if(await reconcileAdditive(raw,data))return;
+  try{if(await reconcileAdditive(raw,data))return}
+  catch(e){syncError='No se pudo guardar la copia de seguridad para fusionar; se conservarán ambos datos';status(true)}
  }
  status(true);
 }
