@@ -140,7 +140,7 @@ $('#editform').addEventListener('change',()=>{saveDraft();if(!editing)return;cle
 $('#cancel').onclick=()=>{if(editing){if(validValues(formValues(),false))commitEditor(false)}$('#editor').close();flash('Las modificaciones válidas ya quedaron guardadas')};
 $('#new').onclick=()=>{clearDraft();openEditor(null)};
 $('#search').oninput=render;$('#filter').onchange=render;$('#category').onchange=render;
-$('#works').onclick=e=>{const b=e.target.closest('button[data-act]');if(!b)return;const w=works.find(x=>x.id===b.dataset.id);if(!w)return;switch(b.dataset.act){case 'app':launchApp(w);break;case 'edit':openEditor(w);break;case 'open':{const url=safeUrl(w.url);if(url)window.open(url,'_blank','noopener,noreferrer');else{flash('Registra primero el enlace real de esa conversación.');openEditor(w)}break}case 'file':{const url=fileUrl(w.filePath);if(url){const child=window.open(url,'_blank');if(!child)flash('Chrome puede bloquear el archivo local: revisa permisos y ubicación en OneDrive.')}break}case 'print':printOne(w);break;case 'delete':if(confirm('¿Eliminar la ficha de «'+w.name+'»? Esto NO elimina su conversación ni el archivo de OneDrive.')){const prev=clone(works);works=works.filter(x=>x.id!==w.id);persist('Eliminar ficha: '+w.name,prev);refillCats();render()}break}};
+$('#works').onclick=async e=>{const b=e.target.closest('button[data-act]');if(!b)return;const w=works.find(x=>x.id===b.dataset.id);if(!w)return;switch(b.dataset.act){case 'app':launchApp(w);break;case 'edit':openEditor(w);break;case 'open':{const url=safeUrl(w.url);if(url)window.open(url,'_blank','noopener,noreferrer');else{flash('Registra primero el enlace real de esa conversación.');openEditor(w)}break}case 'file':{const url=fileUrl(w.filePath);if(url){const child=window.open(url,'_blank');if(!child)flash('Chrome puede bloquear el archivo local: revisa permisos y ubicación en OneDrive.')}break}case 'print':printOne(w);break;case 'delete':if(confirm('¿Eliminar la ficha de «'+w.name+'»? Esto NO elimina su conversación ni el archivo de OneDrive.')){const prev=clone(works);works=works.filter(x=>x.id!==w.id);persist('Eliminar ficha: '+w.name,prev);refillCats();render()}break}};
 function printHtml(title,body){
  const win=window.open('','_blank');
  if(!win){flash('Chrome bloqueó la ventana de impresión; permite ventanas emergentes para este archivo.');return}
@@ -186,9 +186,42 @@ function migratePatente(){
  if(folder&&/\\ChatGPT\\PatenteCL-complemento$/i.test(folder.filePath)){folder.filePath=PATENTE_DEFAULT.filePath;folder.fileModifiedAt=null;changed=true}
  if(!changed||persist('Acceso de Patente CL desde el Centro de Control',before)){try{localStorage.setItem(PATENTE_MIGRATION_KEY,'1')}catch{}}
 }
+
+function unifyPatente(){
+ if(localStorage.getItem(PATENTE_MERGE_KEY))return;
+ const duplicates=works.filter(w=>w.id==='patente-complemento'||(w.id!=='patente-cl'&&/^patente\s*-?\s*cl\b/i.test(w.name.trim())));
+ if(!duplicates.length){try{localStorage.setItem(PATENTE_MERGE_KEY,'1')}catch{}return}
+ const old=clone(works);let main=works.find(w=>w.id==='patente-cl');
+ if(!main){main=sane(seed.find(w=>w.id==='patente-cl'));works.push(main)}
+ for(const x of duplicates){if(!main.url&&safeUrl(x.url))main.url=x.url;if(!main.filePath&&x.filePath)main.filePath=x.filePath;if(!main.appUrl&&safeAppUrl(x.appUrl))main.appUrl=x.appUrl}
+ const ids=new Set(duplicates.map(x=>x.id));works=works.filter(w=>!ids.has(w.id));main.updatedAt=now();main.revision++;
+ try{localStorage.setItem('centro_control_patente_archivadas_v35',JSON.stringify(duplicates))}catch{}
+ if(persist('Unificar fichas de Patente CL',old)){try{localStorage.setItem(PATENTE_MERGE_KEY,'1')}catch{}}
+}
+let lastUpdateCheck=0,latestVersion='';
+async function checkForUpdate(silent=false){
+ lastUpdateCheck=Date.now();const btn=$('#checkUpdates'),out=$('#updateState');
+ if(location.protocol!=='https:'){out.textContent='Abre la página publicada para comprobar actualizaciones.';return}
+ if(!silent){btn.disabled=true;out.textContent='Comprobando versión…'}
+ try{
+  const url=new URL('./index.html',location.href);url.searchParams.set('_v',String(Date.now()));
+  const res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error('sin conexión');
+  const match=(await res.text()).match(/<meta name="centro-version" content="([0-9.]+)">/);
+  if(!match)throw Error('sin versión');
+  latestVersion=match[1];
+  if(latestVersion!==APP_VERSION){btn.textContent='↻ Actualizar aplicación';out.textContent='Nueva versión '+latestVersion+' disponible. Las fichas guardadas en Chrome se conservarán.'}
+  else{btn.textContent='↻ Comprobar actualización';out.textContent='Versión '+APP_VERSION+' al día; datos de fichas guardados en este navegador.'}
+ }catch(e){if(!silent)out.textContent='No se pudo comprobar la versión; vuelve a intentarlo.'}
+ finally{btn.disabled=false}
+}
+$('#checkUpdates').onclick=()=>{if(latestVersion&&latestVersion!==APP_VERSION){
+ if($('#editor').open){flash('Cierra primero la edición para actualizar.');return}
+ const url=new URL(location.href);url.searchParams.set('v',latestVersion);location.assign(url.href)
+}else void checkForUpdate(false)};
+
 function patenteWork(){return works.find(w=>w.id==='patente-cl')}
 function renderPatenteAccess(){const w=patenteWork();$('#patenteAccess').hidden=true;if(!w)return;const url=safeAppUrl(w.appUrl);$('#openPatente').disabled=!url;$('#patenteVersion').textContent='Acceso preparado para v'+w.appVersion+' · '+w.appDate;$('#patenteLink').value=url||'';let verified=null;try{verified=JSON.parse(localStorage.getItem('centro_control_patente_acceso')||'null')}catch{}$('#patenteStatus').textContent=verified?.url===url&&verified?.version===w.appVersion?'Acceso comprobado el '+compactDate(verified.at)+' · v'+verified.version:'Primera vez: actualiza el complemento y comprueba el acceso.'}
-function launchApp(w){const url=safeAppUrl(w?.appUrl);if(!url){flash('Registra el enlace de Patente CL en su ficha.');return}if(location.protocol!=='file:'){flash('Descarga el Centro de Control y ábrelo como archivo en Chrome.');showPatenteSetup();return}window.open(url,'_blank','noopener,noreferrer');flash('Abriendo Patente CL. Si Chrome lo bloquea, pulsa «Configurar / comprobar».')}
+function launchApp(w){const url=safeAppUrl(w?.appUrl);if(!url){flash('Registra el enlace de Patente CL en su ficha.');return}if(location.protocol!=='file:'){flash('Esta página no puede abrir extensiones de Chrome. Copia su dirección desde «Configurar / comprobar».');showPatenteSetup();return}window.open(url,'_blank','noopener,noreferrer');flash('Abriendo Patente CL. Si Chrome lo bloquea, pulsa «Configurar / comprobar».')}
 function showPatenteSetup(){renderPatenteAccess();$('#patenteSetup').showModal()}
 $('#openPatente').onclick=()=>launchApp(patenteWork());
 $('#helpPatente').onclick=showPatenteSetup;
@@ -196,15 +229,18 @@ $('#closePatenteSetup').onclick=()=>$('#patenteSetup').close();
 $('#copyPatente').onclick=async()=>{const input=$('#patenteLink');try{await navigator.clipboard.writeText(input.value);$('#patenteCheckResult').textContent='Dirección copiada. Pulsa Ctrl + L, Ctrl + V y Enter en Chrome.'}catch{input.focus();input.select();$('#patenteCheckResult').textContent='Dirección seleccionada. Pulsa Ctrl + C para copiarla; luego Ctrl + L, Ctrl + V y Enter.'}};
 $('#checkPatente').onclick=async()=>{
  const button=$('#checkPatente'),result=$('#patenteCheckResult'),url=safeAppUrl(patenteWork()?.appUrl);
- if(location.protocol!=='file:'){result.textContent='Descarga este HTML, guárdalo en tu carpeta habitual y ábrelo en Chrome para comprobar el complemento.';return}
+ if(location.protocol!=='file:'){result.textContent='Esta página no puede comprobar extensiones de Chrome. Usa «Copiar dirección» y pégala en Chrome.';return}
  if(!url){result.textContent='Falta registrar la dirección del complemento en su ficha.';return}
  button.disabled=true;result.textContent='Comprobando acceso…';const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),7000);
  try{const response=await fetch(url,{signal:abort.signal,cache:'no-store'});if(!response.ok)throw Error('Sin acceso');const html=await response.text();const version=html.match(/<strong>Versión\s+([0-9]+\.[0-9]+\.[0-9]+)<\/strong>/)?.[1];if(!version)throw Error('No es la herramienta esperada');try{localStorage.setItem('centro_control_patente_acceso',JSON.stringify({url,version,at:now()}))}catch{}result.textContent='Acceso comprobado en este Chrome · Patente CL v'+version+'. Ya puedes pulsar «Abrir Patente CL».';$('#patenteStatus').textContent='Acceso comprobado · complemento v'+version;
  }catch{try{localStorage.removeItem('centro_control_patente_acceso')}catch{}result.textContent='No se pudo comprobar el acceso. Revisa Recargar y «Permitir acceso a URLs de archivo». Si el complemento cambió de dirección, cópiala desde la P y actualiza la ficha.';$('#patenteStatus').textContent='Falta comprobar el acceso en tu Chrome.'}finally{clearTimeout(timer);button.disabled=false}
 };
 migratePatente();
+unifyPatente();
 
 refillCats();render();status(true);void loadHandle();
+void checkForUpdate(true);
+window.addEventListener('focus',()=>{if(Date.now()-lastUpdateCheck>300000)void checkForUpdate(true)});
 
 })();
 </script></body></html>
